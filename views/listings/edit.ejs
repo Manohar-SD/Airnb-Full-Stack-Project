@@ -1,0 +1,44 @@
+<%-layout("layouts/boilerPlate.ejs")%>
+<div class="row">
+    <div class="col-8 offset-2">
+        <br>  <br>
+        <h3>Edit your  Listings : <%=listing.title%>    </h3>
+
+    <form action="/listings/<%=listing._id%>?_method=PATCH"  enctype="multipart/form-data" method="post">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input  type="text" value="<%=listing.title%>"  class="form-control" name="listing[title]" placeholder="Enter a Catchy Title">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea   class="form-control" value="<%=listing.description%>" name="listing[description]" placeholder="Enter Description"><%=listing.description%></textarea>
+            </div>
+
+            <div class="mb-3">
+                Original listing Image <br>
+                <img src="<%=originalImgUrl%>" alt="">
+            </div>
+              <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+               <input type="file" class="form-control" required name="listing[image]" > </div>
+            <div class="row">
+            <div class="mb-3 col-md-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" class="form-control" value="<%=listing.price%>" name="listing[price]" placeholder="1200">
+            </div>
+            <div class="mb-3 col-md-8">
+                <label for="country" class="form-label">Country</label>
+                <input type="text" class="form-control" name="listing[country]" value="<%=listing.country%>" placeholder="India">
+            </div>
+            </div>
+          
+            <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" class="form-control" value="<%=listing.location%>" name="listing[location]" placeholder="Jaipur,Rajasthan">
+            </div>
+            
+            <button class="btn btn-dark  add-btn">Edit</button>
+            <br> <br>
+        </form>
+        </div>
+</div>

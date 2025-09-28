@@ -1,0 +1,138 @@
+<% layout('layouts/boilerPlate') -%>
+
+    <style>
+        #filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .filter {
+            text-align: center;
+            margin-top: 2rem;
+            opacity: 0.7;
+        }
+
+        .filter:hover {
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        .filter p {
+            font-size: 0.5rem;
+        }
+
+.tax-info{
+    display: none;
+}
+.tax-toggle{
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 3rem;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    margin-left: 5rem;
+    display: flex;
+    align-items: center;
+}
+
+    </style>
+    <!-- <h1>All Listings</h1> -->
+    <!-- <form action="/listings/new" method="get">
+        <button>Add Listings</button>
+    </form> -->
+    <div id="filters">
+
+        <div class="filter">
+            <div> <i class="fa-solid fa-fire"></i> </div>
+            <p>Trending</p>
+        </div>
+        <div class="filter">
+            <div> <i class="fa-solid fa-bed"></i> </div>
+            <p>Rooms</p>
+        </div>
+        <div class="filter">
+            <div> <i class="fa-solid fa-mountain-city"></i> </div>
+            <p>Iconic Cites</p>
+        </div>
+        <div class="filter">
+            <div> <i class="fa-solid fa-mountain"></i> </div>
+            <p>Mountain</p>
+        </div>
+        <div class="filter">
+            <div> <i class="fa-solid fa-fort-awesome"></i> </div>
+            <p>Castles</p>
+        </div>
+        <div class="filter">
+            <div> <i class="fa-solid fa-cow"></i> </div>
+            <p>Farms</p>
+        </div>
+        <div class="filter">
+            <div> <i class="fa-solid fa-person-swimming"></i> </div>
+            <p>Artic</p>
+        </div>
+         <div class="filter">
+            <div> <i class="fa-solid fa-igloo"></i> </div>
+            <p>Domes</p>
+        </div>
+         <div class="filter">
+            <div> <i class="fa-solid fa-snowflake"></i> </div>
+            <p>Boats</p>
+        </div>
+
+        <div class="tax-toggle">
+            <div class="form-check-reverse form-switch">
+    
+                <label class="form-check-label" for="switchCheckDefault">Display Total After GST </label>
+                   <input  class="form-check-input" type="checkbox" role="switch" id="flexSwitchToDefault">
+        
+            </div>
+        </div>
+
+    </div>
+
+    <!-- <div class="container"> -->
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+        <%for(let listing of listings){%>
+            <a style="text-decoration: none;" href="/listings/<%=listing._id%>">
+                <div class="card listing-card">
+                    <img style="height: 20rem;" src="<%=listing.image.url%>" class="card-img-top" alt="...">
+                    <div class="card-img-overlay"></div>
+                    <h5 class="card-title">
+                        <%=listing.title%>
+                    </h5>
+                    <div class="card-body">
+                        <i>
+                            <%=listing.owner.username%>
+                        </i>
+                        <p class="card-text">&#8377; <%=listing.price.toLocaleString("en-IN")%>/night</p>
+                        <i  class="tax-info">&nbsp; &nbsp; +18% GST</i>
+                    </div>
+                </div>
+            </a>
+            <%}%>
+    </div>
+
+    <script>
+        let taxSwitch = document.getElementById("flexSwitchToDefault")
+        taxSwitch.addEventListener("click",()=>{
+         let taxInfo = document.getElementsByClassName("tax-info");
+         
+         for(info of taxInfo){
+           if(info.style.display!="inline"){
+            info.style.display="inline"
+           }else{
+                        info.style.display="none"
+           }
+           
+         }
+            
+        })
+    </script>
+    <!-- </div> -->
+    <!-- <ul>
+            <%for(let listing of listings){%>
+                <li><a href="/listings/<%=listing._id%>">
+                        <%=listing.title%>
+                    </a></li>
+                <%}%> </ul> -->
