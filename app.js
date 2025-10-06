@@ -9,14 +9,12 @@ const mongoose = require("mongoose");
 const app = express();
 const port = 8080;
 const wrapAsync = require("./utils/wrapAsync.js")
-// const mongoUrl ='mongodb://127.0.0.1:27017/wonderlust'
+// const dbUrl ='mongodb://127.0.0.1:27017/wonderlust'
 const dbUrl = process.env.ATLASDB_URL;
 
 
 
-const Review = require("./models/review.js")
 
-const {listingSchema,reviewSchema} = require("./schema.js");
 
 const userRouter = require("./routes/user.js");
 const listingsRouter = require("./routes/listing.js");
@@ -253,7 +251,9 @@ app.listen(port,()=>{
 //     res.redirect(`/listings/${id}`);                       
 // })
 
-
+app.get("/",(req,res)=>{
+    res.redirect("/listings");
+})
 app.use("/listings",listingsRouter);
 app.use("/listings/:id/reviews",reviewsRouter);
 app.use("/",userRouter);
@@ -263,9 +263,7 @@ app.use(/(.*)/,(req,res,next)=>{
 })
 
 app.use((err,req,res,next)=>{
-  const {status=500,message="Something Went Wrong"} = err 
-  console.log(err);
-  
+  const {status=500,message="Something Went Wrong"} = err   
     res.status(status).render("Error.ejs",{message})
 }) 
 

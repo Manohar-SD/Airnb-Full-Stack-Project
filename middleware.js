@@ -52,11 +52,11 @@ module.exports.validateReview=(req,res,next)=>{
     }
 }
 
-module.exports.isReviewAuthor= (req,res,next)=>{
+module.exports.isReviewAuthor= async(req,res,next)=>{
     let {id,reviewId } = req.params;
-    let review = Review.findById(reviewId);
-    if(!review.owner.equals(res.locals.user._id)){
-        req.flash("error","You are not author of the post");
+    let review = await Review.findById(reviewId);
+    if(!review.author.equals(res.locals.user._id)){
+        req.flash("error","You are not the author of the Listing");
         return res.redirect(`/listings/${id}`);
 
     }

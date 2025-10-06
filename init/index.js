@@ -21,9 +21,9 @@ async function connectToDb() {
 async function initDb (){
     await Listing.deleteMany({});
 
-    let data = initData.data.map((data)=>({...data,owner:"68c82db9507ded15b22f26cb"}))
+    // let data = initData.data.map((data)=>({...data,owner:"68c82db9507ded15b22f26cb"}))
 
-    await Listing.insertMany(data);
+    await Listing.insertMany(initData);
     console.log("Initialized Db");
     
 }

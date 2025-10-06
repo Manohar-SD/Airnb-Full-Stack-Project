@@ -4,10 +4,14 @@
         #filters {
             display: flex;
             flex-wrap: wrap;
+            justify-content: space-between;
             gap: 2rem;
         }
 
         .filter {
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
             text-align: center;
             margin-top: 2rem;
             opacity: 0.7;
@@ -16,6 +20,12 @@
         .filter:hover {
             opacity: 1;
             cursor: pointer;
+        }
+
+        .icons-container{
+            display:flex;
+            flex-wrap:wrap;
+            gap:1rem;
         }
 
         .filter p {
@@ -41,33 +51,35 @@
     <!-- <form action="/listings/new" method="get">
         <button>Add Listings</button>
     </form> -->
-    <div id="filters">
-
-        <div class="filter">
+  
+    <div  id="filters">
+        <!-- <div class="filter">
             <div> <i class="fa-solid fa-fire"></i> </div>
             <p>Trending</p>
-        </div>
-        <div class="filter">
+        </div> -->
+        <!-- <div class="filter">
             <div> <i class="fa-solid fa-bed"></i> </div>
             <p>Rooms</p>
-        </div>
-        <div class="filter">
-            <div> <i class="fa-solid fa-mountain-city"></i> </div>
+        </div> -->
+      <div class="icons-container">
+         <a href="/listings?category=iconic+cities" class="filter">
+              <i class="fa-solid fa-mountain-city"></i> 
             <p>Iconic Cites</p>
-        </div>
-        <div class="filter">
-            <div> <i class="fa-solid fa-mountain"></i> </div>
+       </a>
+        <a href="/listings?category=mountain" class="filter">
+              <i class="fa-solid fa-mountain"></i> 
             <p>Mountain</p>
-        </div>
-        <div class="filter">
-            <div> <i class="fa-solid fa-fort-awesome"></i> </div>
+        </a>
+        <a href="/listings?category=castles" class="filter">
+             <i class="fa-solid fa-fort-awesome"></i> 
             <p>Castles</p>
-        </div>
-        <div class="filter">
-            <div> <i class="fa-solid fa-cow"></i> </div>
+        </a>
+         <a href="/listings?category=farms"  class="filter">
+           <i class="fa-solid fa-cow"></i> 
             <p>Farms</p>
-        </div>
-        <div class="filter">
+            </a>
+      </div>
+        <!-- <div class="filter">
             <div> <i class="fa-solid fa-person-swimming"></i> </div>
             <p>Artic</p>
         </div>
@@ -78,7 +90,7 @@
          <div class="filter">
             <div> <i class="fa-solid fa-snowflake"></i> </div>
             <p>Boats</p>
-        </div>
+        </div> -->
 
         <div class="tax-toggle">
             <div class="form-check-reverse form-switch">
@@ -105,8 +117,8 @@
                         <i>
                             <%=listing.owner.username%>
                         </i>
-                        <p class="card-text">&#8377; <%=listing.price.toLocaleString("en-IN")%>/night</p>
-                        <i  class="tax-info">&nbsp; &nbsp; +18% GST</i>
+                        <p class="card-text">&#8377; <%=listing.price.toLocaleString("en-IN")%>/night   <i  class="tax-info">&nbsp; &nbsp; +18% GST</i></p>
+                       
                     </div>
                 </div>
             </a>
@@ -122,13 +134,36 @@
            if(info.style.display!="inline"){
             info.style.display="inline"
            }else{
-                        info.style.display="none"
+                info.style.display="none"
            }
            
          }
-            
+        
+        
+        
         })
-    </script>
+   
+// let formEl = document.getElementById("myForm")
+        
+
+//     let filtersDiv = document.getElementsByClassName("filter");
+        
+    
+//          for(let filterEl of filtersDiv){
+//               filterEl.addEventListener("click",(event)=>{
+//                 let query = filterEl.children[1].textContent.trim().toLowerCase();
+//                 console.log(query); // mountain
+                
+//                 formEl.action = `/listings?category=manohar`;
+//                 // formEl.action = `/?category=${encodeURIComponent(query)}`;
+//                 console.log(formEl.action);
+                
+//                 formEl.submit();
+//             })
+//          }
+
+    
+   </script>
     <!-- </div> -->
     <!-- <ul>
             <%for(let listing of listings){%>

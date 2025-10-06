@@ -1,6 +1,15 @@
-const Listing = require("../models/listings")
+const Listing = require("../models/listings");
+const ExpressError = require("../utils/ExpressError");
+
+
 module.exports.index = async (req, res) => {
-    let allListings = await Listing.find()
+    let query = req.query.title || "";
+    let category = req.query.category || "";
+    console.log(category);
+    let allListings = await Listing.find({category:{$regex:category,$options:"i"},title:{$regex:query,$options:"i"}});
+    if(allListings.length==0){
+        throw new ExpressError(400,"No Listings Found for your Search");
+    }
     res.render("listings/index.ejs", { listings: allListings })
 }
 

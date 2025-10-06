@@ -6,25 +6,30 @@ body{
 }
 .container{
     flex: 1;
+    min-height: 60vh;
 }
 .navbar{
     height: 5rem;
     background-color: white;
 }
-.fa-compass{
+/* .fa-compass{
     color:red;
     font-size: 2rem;
-}
+} */
 .nav-link{
     color: black !important;
 }
 
 /* footer  */
-
+/* footer{
+    width:100%;
+    position: absolute;
+    bottom: 0;
+} */
 
 .f-info-links a{
     text-decoration: none;
-    color: #222222;
+    color: #443d3d;
 }
 .f-info-links a:hover{
     text-decoration: underline;
@@ -64,10 +69,10 @@ body{
     background-color: white;
 }
 
-.add-btn{
-    background-color: red;
+/* .add-btn{
+    background-color: #408fd5;
     border: none;
-}
+} */
 
 .show-img{
     height: 40vh;

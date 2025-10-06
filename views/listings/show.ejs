@@ -14,9 +14,10 @@
             </h5>
             <div class="card-body">
                 <p class="card-text">
-                <p> Owner : <%=listing.owner.username%>
+                <p> <b>Owner :</b> <%=listing.owner.username%>
                 </p>
                 <%=listing.description%> <br>
+            
                     &#8377; <%=listing.price%> <br>
                         <%=listing.location%> <br>
                             <%=listing.country%>
@@ -80,7 +81,7 @@
                         <%for(let review of listing.reviews){%>
                             <div class="card col-5 ms-3 mb-3">
                                 <div class="card-body">
-                                    <h5 class="card-title">@<%=review.author.username%>
+                                    <h5 class="card-title mt-1">@<%=review.author.username%>
                                     </h5>
 
                                     <p class="starability-result card-text" data-rating="<%=review.rating%>"> </p>
@@ -90,7 +91,9 @@
                                 </div>
                                 <form action="/listings/<%=listing.id%>/reviews/<%=review._id%>?_method=DELETE"
                                     method="post" class="mb-3">
-                                    <button class="btn btn-dark">Delete</button>
+                                   <% if(user){ %>
+                                     <button class="btn btn-danger">Delete</button>
+                                   <% } %>
                                 </form>
                             </div>
                             <%}%>
