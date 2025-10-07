@@ -11,7 +11,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-     folder: "WonderLust_Dev",
+     folder: "StayHeaven",
       allowed_formats: ["jpg", "jpeg", "png"],
   },
 });
