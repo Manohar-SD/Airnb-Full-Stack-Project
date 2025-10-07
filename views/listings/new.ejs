@@ -5,39 +5,48 @@
             <br> <br>
             <h3>Create New Listing</h3>
 
-            <form
-            enctype="multipart/form-data"
-            novalidate class="needs-validation" action="/listings" method="post">
+            <form enctype="multipart/form-data" novalidate class="needs-validation" action="/listings" method="post">
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
                     <input required type="text" class="form-control" name="listing[title]"
                         placeholder="Enter a Catchy Title">
-                        <div class="valid-feedback">Good Title Selected</div>
+                    <div class="valid-feedback">Good Title Selected</div>
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
                     <textarea required class="form-control" name="listing[description]"
                         placeholder="Enter Description"></textarea>
                 </div>
+
+                <div class="mb-3">
+                    <select name="listing[category]"  class="form-select" aria-label="Default select example">
+                        <option selected>Select Category</option>
+                        <option value="iconic cities">Iconic Cities</option>
+                        <option value="farms">Farms</option>
+                        <option value="castles">Castles</option>
+                        <option value="mountain">Mountains</option>
+                    </select>
+                </div>
+
                 <!-- <div class="mb-3">
                     <label for="image" class="form-label">Image</label>
                     <input type="text" class="form-control" required name="listing[image]" placeholder="Enter Image URl">
                 </div> -->
-                 <div class="mb-3">
+                <div class="mb-3">
                     <label for="image" class="form-label">Upload Listing Image</label>
-                    <input type="file" class="form-control"  name="listing[image]" >
+                    <input type="file" class="form-control" name="listing[image]">
                 </div>
                 <div class="row">
                     <div class="mb-3 col-md-3">
                         <label for="price" class="form-label">Price</label>
                         <input required type="text" class="form-control" name="listing[price]" placeholder="1200">
-                        <div class="invalid-feedback">Enter Valid  Price</div>
+                        <div class="invalid-feedback">Enter Valid Price</div>
 
                     </div>
                     <div class="mb-3 col-md-8">
                         <label for="country" class="form-label">Country</label>
                         <input required type="text" class="form-control" name="listing[country]" placeholder="India">
-                        
+
                         <div class="invalid-feedback">Enter Valid Country Name </div>
 
                     </div>
@@ -47,8 +56,8 @@
                     <label for="location" class="form-label">Location</label>
                     <input required type="text" class="form-control" name="listing[location]"
                         placeholder="Jaipur,Rajasthan">
-                        
-                        <div class="invalid-feedback">Enter Valid  Location</div>
+
+                    <div class="invalid-feedback">Enter Valid Location</div>
 
                 </div>
 
